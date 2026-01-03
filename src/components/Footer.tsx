@@ -1,30 +1,86 @@
-import { Heart } from 'lucide-react';
+import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="py-8 border-t border-border">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <span>© {currentYear} Nagashree B K.</span>
-            <span className="hidden md:inline">•</span>
-            <span className="flex items-center gap-1">
-              Built with <Heart className="w-3 h-3 text-primary fill-primary" /> for data
-            </span>
+    <footer className="relative py-12 border-t border-border overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent" />
+      
+      <div className="container mx-auto px-6 relative">
+        <div className="flex flex-col items-center gap-8">
+          {/* Logo & Tagline */}
+          <div className="text-center">
+            <h3 className="text-2xl font-bold gradient-text mb-2">Nagashree B K</h3>
+            <p className="text-sm text-muted-foreground">Data Analytics Engineer • Cloud Solutions • Business Intelligence</p>
           </div>
 
-          <div className="flex items-center gap-6 text-sm">
-            <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">
-              Home
-            </a>
-            <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">
-              Projects
-            </a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
-              Contact
-            </a>
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            {[
+              { icon: Github, href: 'https://github.com/NagashreeBK98', label: 'GitHub' },
+              { icon: Linkedin, href: 'https://linkedin.com/in/nagashreebk', label: 'LinkedIn' },
+              { icon: Mail, href: 'mailto:bommenahallikumara.n@northeastern.edu', label: 'Email' },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                target={social.href.startsWith('mailto') ? undefined : '_blank'}
+                rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                className="group w-10 h-10 rounded-xl bg-secondary/50 border border-border hover:border-primary/40 hover:bg-primary/10 flex items-center justify-center transition-all"
+                aria-label={social.label}
+              >
+                <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+            ))}
+          </div>
+
+          {/* Navigation */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            {[
+              { label: 'Home', href: '#home' },
+              { label: 'About', href: '#about' },
+              { label: 'Experience', href: '#experience' },
+              { label: 'Skills', href: '#skills' },
+              { label: 'Projects', href: '#projects' },
+              { label: 'Contact', href: '#contact' },
+            ].map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+          {/* Copyright */}
+          <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
+              <span>© {currentYear} Nagashree B K.</span>
+              <span className="hidden md:inline text-border">•</span>
+              <span className="flex items-center gap-1">
+                Built with <Heart className="w-3.5 h-3.5 text-primary fill-primary animate-pulse" /> for data
+              </span>
+            </div>
+
+            {/* Scroll to Top */}
+            <button
+              onClick={scrollToTop}
+              className="group flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border hover:border-primary/40 hover:bg-primary/10 transition-all text-sm text-muted-foreground hover:text-primary"
+            >
+              <span>Back to top</span>
+              <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+            </button>
           </div>
         </div>
       </div>
