@@ -145,11 +145,11 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Enhanced Visual Section */}
+          {/* Profile Photo Section */}
           <div className={`relative lg:pl-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="relative">
-              {/* Main Profile Circle */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96 mx-auto">
+              {/* Main Profile Photo */}
+              <div className="relative w-80 h-80 md:w-[420px] md:h-[420px] mx-auto">
                 {/* Outer Glow Ring */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-primary/20 to-transparent animate-spin-slow" 
                   style={{ animationDuration: '20s' }} 
@@ -158,35 +158,19 @@ const HeroSection = () => {
                 {/* Pulsing Ring */}
                 <div className="absolute inset-2 rounded-full border-2 border-primary/30 animate-pulse-glow" />
                 
-                {/* Inner Circle */}
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-card via-card to-secondary border border-border/50 overflow-hidden shadow-2xl shadow-primary/10">
-                  <div className="w-full h-full flex items-center justify-center relative">
-                    {/* Abstract Data Visualization Background */}
-                    <div className="absolute inset-0 opacity-20">
-                      <svg viewBox="0 0 200 200" className="w-full h-full">
-                        <defs>
-                          <linearGradient id="bar-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
-                            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-                          </linearGradient>
-                        </defs>
-                        {[...Array(8)].map((_, i) => (
-                          <rect
-                            key={i}
-                            x={30 + i * 18}
-                            y={200 - 40 - Math.random() * 80}
-                            width="12"
-                            height={40 + Math.random() * 80}
-                            fill="url(#bar-gradient)"
-                            rx="2"
-                            className="animate-pulse"
-                            style={{ animationDelay: `${i * 0.2}s` }}
-                          />
-                        ))}
-                      </svg>
-                    </div>
-                    <span className="text-8xl font-bold gradient-text relative z-10">N</span>
-                  </div>
+                {/* Decorative Ring */}
+                <div className="absolute inset-4 rounded-full border border-dashed border-primary/20 animate-spin-slow" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
+                
+                {/* Inner Circle with Photo */}
+                <div className="absolute inset-6 rounded-full bg-gradient-to-br from-card via-card to-secondary border-2 border-border/50 overflow-hidden shadow-2xl shadow-primary/20">
+                  {/* Profile Photo - Replace src with your actual photo */}
+                  <img 
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop&crop=face"
+                    alt="Nagashree B K - Data Analytics Professional"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Subtle Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
                 </div>
 
                 {/* Orbiting Dots */}
@@ -196,10 +180,13 @@ const HeroSection = () => {
                 <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}>
                   <div className="absolute bottom-4 right-4 w-2 h-2 bg-primary/60 rounded-full" />
                 </div>
+                <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '25s' }}>
+                  <div className="absolute top-1/4 right-0 w-2.5 h-2.5 bg-cyan-400/80 rounded-full" />
+                </div>
               </div>
 
               {/* Enhanced Floating Cards */}
-              <div className="absolute -top-6 right-0 md:right-8 group">
+              <div className="absolute -top-4 right-0 md:right-4 group">
                 <div className="card-glass rounded-xl p-4 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
@@ -213,7 +200,7 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 left-0 md:left-8 group">
+              <div className="absolute -bottom-2 left-0 md:left-4 group">
                 <div className="card-glass rounded-xl p-4 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
@@ -227,7 +214,7 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:right-0 group">
+              <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-2 group">
                 <div className="card-glass rounded-xl p-4 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
@@ -242,11 +229,11 @@ const HeroSection = () => {
               </div>
 
               {/* Tech Stack Pills */}
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-2">
-                {['Python', 'SQL', 'Power BI'].map((tech, i) => (
+              <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 flex gap-2">
+                {['Python', 'SQL', 'Power BI', 'Snowflake'].map((tech, i) => (
                   <span 
                     key={tech}
-                    className="px-3 py-1 text-xs font-medium bg-secondary/80 border border-border/50 rounded-full text-muted-foreground backdrop-blur-sm"
+                    className="px-3 py-1.5 text-xs font-medium bg-secondary/80 border border-border/50 rounded-full text-muted-foreground backdrop-blur-sm hover:border-primary/30 hover:text-foreground transition-colors cursor-default"
                     style={{ animationDelay: `${i * 0.1}s` }}
                   >
                     {tech}
