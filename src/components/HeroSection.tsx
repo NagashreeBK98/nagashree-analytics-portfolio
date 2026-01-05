@@ -2,23 +2,12 @@ import { ArrowDown, Download, Mail, ExternalLink, Database, Cloud, BarChart3, Sp
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
-const roles = [
-  "Data Engineer",
-  "Analytics Professional", 
-  "Cloud Architect",
-  "BI Developer"
-];
 
 const HeroSection = () => {
-  const [currentRole, setCurrentRole] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -94,19 +83,10 @@ const HeroSection = () => {
               </h1>
             </div>
 
-            {/* Animated Role */}
-            <div className="h-8 overflow-hidden">
-              <div 
-                className="transition-transform duration-500 ease-out"
-                style={{ transform: `translateY(-${currentRole * 32}px)` }}
-              >
-                {roles.map((role, index) => (
-                  <p key={index} className="text-xl text-primary font-medium h-8 flex items-center">
-                    {role}
-                  </p>
-                ))}
-              </div>
-            </div>
+            {/* Job Title */}
+            <p className="text-xl text-primary font-medium">
+              Data Engineer | Azure • Power BI • Python
+            </p>
 
             {/* Tagline */}
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
