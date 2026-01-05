@@ -76,7 +76,7 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10 min-h-screen flex items-center">
-        <div className="grid lg:grid-cols-[1fr,auto] gap-8 lg:gap-12 items-center w-full py-20">
+        <div className="flex flex-col-reverse md:flex-row gap-8 lg:gap-12 items-center justify-between w-full py-20">
           {/* Content */}
           <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Badge */}
