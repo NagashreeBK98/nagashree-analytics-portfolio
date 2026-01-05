@@ -75,10 +75,10 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 pt-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container mx-auto px-6 relative z-10 min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-[1fr,auto] gap-8 lg:gap-12 items-center w-full py-20">
           {/* Content */}
-          <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-primary" />
@@ -86,8 +86,8 @@ const HeroSection = () => {
             </div>
 
             {/* Name with Enhanced Typography */}
-            <div className="space-y-2">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+            <div className="space-y-1">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
                 <span className="block text-foreground">Nagashree</span>
                 <span className="block gradient-text py-1">Bommenahalli</span>
                 <span className="block text-foreground">Kumaraswamy</span>
@@ -137,108 +137,104 @@ const HeroSection = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="flex items-center gap-8 pt-4">
+            <div className="flex items-center gap-8 pt-2">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-sm text-muted-foreground">Available for opportunities</span>
               </div>
             </div>
+
+            {/* Tech Stack Pills */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {['Python', 'SQL', 'Power BI', 'Snowflake', 'AWS', 'Azure'].map((tech, i) => (
+                <span 
+                  key={tech}
+                  className="px-3 py-1.5 text-xs font-medium bg-secondary/80 border border-border/50 rounded-full text-muted-foreground backdrop-blur-sm hover:border-primary/30 hover:text-foreground transition-colors cursor-default"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Profile Photo Section */}
-          <div className={`relative lg:pl-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative">
-              {/* Main Profile Photo */}
-              <div className="relative w-80 h-80 md:w-[420px] md:h-[420px] mx-auto">
-                {/* Outer Glow Ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-primary/20 to-transparent animate-spin-slow" 
-                  style={{ animationDuration: '20s' }} 
+          {/* Profile Photo Section - Aligned with Name */}
+          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px]">
+              {/* Outer Glow Ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-primary/20 to-transparent animate-spin-slow" 
+                style={{ animationDuration: '20s' }} 
+              />
+              
+              {/* Pulsing Ring */}
+              <div className="absolute inset-2 rounded-full border-2 border-primary/30 animate-pulse-glow" />
+              
+              {/* Decorative Ring */}
+              <div className="absolute inset-4 rounded-full border border-dashed border-primary/20 animate-spin-slow" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
+              
+              {/* Inner Circle with Photo */}
+              <div className="absolute inset-5 rounded-full bg-gradient-to-br from-card via-card to-secondary border-2 border-border/50 overflow-hidden shadow-2xl shadow-primary/20">
+                {/* Profile Photo - Replace src with your actual photo */}
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop&crop=face"
+                  alt="Nagashree B K - Data Analytics Professional"
+                  className="w-full h-full object-cover"
                 />
-                
-                {/* Pulsing Ring */}
-                <div className="absolute inset-2 rounded-full border-2 border-primary/30 animate-pulse-glow" />
-                
-                {/* Decorative Ring */}
-                <div className="absolute inset-4 rounded-full border border-dashed border-primary/20 animate-spin-slow" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
-                
-                {/* Inner Circle with Photo */}
-                <div className="absolute inset-6 rounded-full bg-gradient-to-br from-card via-card to-secondary border-2 border-border/50 overflow-hidden shadow-2xl shadow-primary/20">
-                  {/* Profile Photo - Replace src with your actual photo */}
-                  <img 
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop&crop=face"
-                    alt="Nagashree B K - Data Analytics Professional"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Subtle Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
-                </div>
-
-                {/* Orbiting Dots */}
-                <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '15s' }}>
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full shadow-lg shadow-primary/50" />
-                </div>
-                <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}>
-                  <div className="absolute bottom-4 right-4 w-2 h-2 bg-primary/60 rounded-full" />
-                </div>
-                <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '25s' }}>
-                  <div className="absolute top-1/4 right-0 w-2.5 h-2.5 bg-cyan-400/80 rounded-full" />
-                </div>
+                {/* Subtle Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
               </div>
 
-              {/* Enhanced Floating Cards */}
-              <div className="absolute -top-4 right-0 md:right-4 group">
-                <div className="card-glass rounded-xl p-4 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                      <Database className="w-5 h-5 text-green-400" />
+              {/* Orbiting Dots */}
+              <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '15s' }}>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full shadow-lg shadow-primary/50" />
+              </div>
+              <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}>
+                <div className="absolute bottom-4 right-4 w-2 h-2 bg-primary/60 rounded-full" />
+              </div>
+              <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '25s' }}>
+                <div className="absolute top-1/4 right-0 w-2.5 h-2.5 bg-cyan-400/80 rounded-full" />
+              </div>
+
+              {/* Floating Stats Cards */}
+              <div className="absolute -top-6 -right-6 group hidden md:block">
+                <div className="card-glass rounded-xl p-3 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/30">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                      <Database className="w-4 h-4 text-green-400" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Data Pipelines</p>
-                      <p className="text-xl font-bold text-foreground">50% <span className="text-green-400 text-sm">↑</span></p>
+                      <p className="text-[10px] text-muted-foreground">Efficiency</p>
+                      <p className="text-sm font-bold text-foreground">50%↑</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute -bottom-2 left-0 md:left-4 group">
-                <div className="card-glass rounded-xl p-4 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                      <BarChart3 className="w-5 h-5 text-primary" />
+              <div className="absolute -bottom-4 -left-6 group hidden md:block">
+                <div className="card-glass rounded-xl p-3 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/30">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                      <BarChart3 className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Experience</p>
-                      <p className="text-xl font-bold text-foreground">5+ Years</p>
+                      <p className="text-[10px] text-muted-foreground">Experience</p>
+                      <p className="text-sm font-bold text-foreground">5+ Yrs</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-2 group">
-                <div className="card-glass rounded-xl p-4 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-                      <Cloud className="w-5 h-5 text-cyan-400" />
+              <div className="absolute top-1/2 -translate-y-1/2 -right-8 group hidden md:block">
+                <div className="card-glass rounded-xl p-3 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/30">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                      <Cloud className="w-4 h-4 text-cyan-400" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Cloud</p>
-                      <p className="text-lg font-bold text-foreground">AWS + Azure</p>
+                      <p className="text-[10px] text-muted-foreground">Cloud</p>
+                      <p className="text-sm font-bold text-foreground">AWS</p>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Tech Stack Pills */}
-              <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 flex gap-2">
-                {['Python', 'SQL', 'Power BI', 'Snowflake'].map((tech, i) => (
-                  <span 
-                    key={tech}
-                    className="px-3 py-1.5 text-xs font-medium bg-secondary/80 border border-border/50 rounded-full text-muted-foreground backdrop-blur-sm hover:border-primary/30 hover:text-foreground transition-colors cursor-default"
-                    style={{ animationDelay: `${i * 0.1}s` }}
-                  >
-                    {tech}
-                  </span>
-                ))}
               </div>
             </div>
           </div>
