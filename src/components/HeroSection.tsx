@@ -1,13 +1,23 @@
-import { ArrowDown, Download, Mail, ExternalLink, Database, Cloud, BarChart3, Sparkles } from 'lucide-react';
+import { ArrowDown, Download, Mail, ExternalLink, Sparkles, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
+const roles = [
+  "Analytics Engineer",
+  "Power BI Engineer",
+  "Azure Data Engineer"
+];
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 2750);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -67,32 +77,55 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10 min-h-screen flex items-center">
         <div className="flex flex-col-reverse md:flex-row gap-8 lg:gap-12 items-center justify-between w-full py-20">
           {/* Content */}
-          <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`space-y-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-primary font-medium text-sm tracking-wide">Data Analytics Engineering</span>
+              <span className="text-primary font-medium text-sm tracking-wide">Data Analytics Engineer</span>
             </div>
 
-            {/* Name with Enhanced Typography */}
+            {/* Name - Single line on desktop */}
             <div className="space-y-1">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
-                <span className="block text-foreground">Nagashree</span>
-                <span className="block gradient-text py-1">Bommenahalli</span>
-                <span className="block text-foreground">Kumaraswamy</span>
+              <h1 className="text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] font-semibold leading-[1.15] tracking-tight">
+                <span className="text-foreground whitespace-nowrap hidden md:inline">
+                  Nagashree Bommenahalli Kumaraswamy
+                </span>
+                <span className="text-foreground md:hidden">
+                  Nagashree<br />
+                  <span className="text-cyan-400/80">Bommenahalli</span><br />
+                  Kumaraswamy
+                </span>
               </h1>
             </div>
 
-            {/* Job Title */}
-            <p className="text-xl text-primary font-medium">
-              Data Engineer | Azure • Power BI • Python
-            </p>
+            {/* Animated Role */}
+            <div className="h-7 overflow-hidden">
+              <div 
+                className="transition-transform duration-500 ease-out"
+                style={{ transform: `translateY(-${currentRole * 28}px)` }}
+              >
+                {roles.map((role, index) => (
+                  <p key={index} className="text-lg text-primary font-medium h-7 flex items-center">
+                    {role}
+                  </p>
+                ))}
+              </div>
+            </div>
 
             {/* Tagline */}
-            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Transforming complex data into <span className="text-foreground font-medium">actionable insights</span> using 
-              cloud-native analytics. 5+ years building <span className="text-foreground font-medium">scalable data solutions</span>.
+            <p className="text-base text-cyan-400/70 font-medium italic">
+              Driven by Data, Powered by Curiosity.
             </p>
+
+            {/* Summary */}
+            <div className="space-y-2">
+              <p className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
+                From raw ingestion to analytics and Power BI dashboards, 5+ years of industry experience building and owning cloud data pipelines across Azure and AWS.
+              </p>
+              <p className="text-sm text-muted-foreground/70">
+                Currently pursuing a Master's in Data Analytics Engineering at Northeastern University.
+              </p>
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
@@ -116,17 +149,44 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Quick Stats */}
-            <div className="flex items-center gap-8 pt-2">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-sm text-muted-foreground">Available for opportunities</span>
-              </div>
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 pt-2">
+              <a 
+                href="https://www.linkedin.com/in/nagashreebk/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg bg-secondary/50 border border-border/50 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href="https://github.com/NagashreeBK98" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg bg-secondary/50 border border-border/50 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href="mailto:bommenahallikumara.n@northeastern.edu"
+                className="p-2.5 rounded-lg bg-secondary/50 border border-border/50 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
+                aria-label="Email"
+              >
+                <Mail className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+              </a>
+            </div>
+
+            {/* Availability */}
+            <div className="flex items-center gap-2 pt-1">
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-sm text-muted-foreground">Available for Summer & Fall 2026 Internships.</span>
             </div>
 
             {/* Tech Stack Pills */}
             <div className="flex flex-wrap gap-2 pt-2">
-              {['Python', 'SQL', 'Power BI', 'Snowflake', 'AWS', 'Azure'].map((tech, i) => (
+              {['Python', 'SQL', 'Azure', 'AWS', 'Databricks', 'Power BI'].map((tech) => (
                 <span 
                   key={tech}
                   className="px-3 py-1.5 text-xs font-medium bg-secondary/80 border border-border/50 rounded-full text-muted-foreground backdrop-blur-sm hover:border-primary/30 hover:text-foreground transition-colors cursor-default"
@@ -137,9 +197,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Profile Photo Section - Aligned with Name */}
+          {/* Profile Photo Section */}
           <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px]">
+            <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
               {/* Outer Glow Ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-primary/20 to-transparent animate-spin-slow" 
                 style={{ animationDuration: '20s' }} 
@@ -153,13 +213,11 @@ const HeroSection = () => {
               
               {/* Inner Circle with Photo */}
               <div className="absolute inset-5 rounded-full bg-gradient-to-br from-card via-card to-secondary border-2 border-border/50 overflow-hidden shadow-2xl shadow-primary/20">
-                {/* Profile Photo - Replace src with your actual photo */}
                 <img 
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop&crop=face"
                   alt="Nagashree B K - Data Analytics Professional"
                   className="w-full h-full object-cover"
                 />
-                {/* Subtle Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
               </div>
 
@@ -172,49 +230,6 @@ const HeroSection = () => {
               </div>
               <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '25s' }}>
                 <div className="absolute top-1/4 right-0 w-2.5 h-2.5 bg-cyan-400/80 rounded-full" />
-              </div>
-
-              {/* Floating Stats Cards */}
-              <div className="absolute -top-6 -right-6 group hidden md:block">
-                <div className="card-glass rounded-xl p-3 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/30">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
-                      <Database className="w-4 h-4 text-green-400" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-muted-foreground">Efficiency</p>
-                      <p className="text-sm font-bold text-foreground">50%↑</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-4 -left-6 group hidden md:block">
-                <div className="card-glass rounded-xl p-3 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/30">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                      <BarChart3 className="w-4 h-4 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-muted-foreground">Experience</p>
-                      <p className="text-sm font-bold text-foreground">5+ Yrs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute top-1/2 -translate-y-1/2 -right-8 group hidden md:block">
-                <div className="card-glass rounded-xl p-3 shadow-xl shadow-primary/5 border border-border/50 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/30">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-                      <Cloud className="w-4 h-4 text-cyan-400" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-muted-foreground">Cloud</p>
-                      <p className="text-sm font-bold text-foreground">AWS</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
