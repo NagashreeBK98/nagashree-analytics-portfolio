@@ -1,4 +1,4 @@
-import { Briefcase, TrendingUp, Zap, Database, Cloud, BarChart3, ChevronRight, Sparkles } from 'lucide-react';
+import { Briefcase, TrendingUp, Zap, Cloud, BarChart3, ChevronRight, Sparkles, Award, Trophy } from 'lucide-react';
 import { useState } from 'react';
 
 const experiences = [
@@ -8,28 +8,29 @@ const experiences = [
     location: 'Bangalore, India',
     period: 'Nov 2022 – Jul 2025',
     duration: '2+ years',
+    signatureImpact: 'From raw ingestion to executive dashboards, owned and scaled cloud analytics pipelines across Azure and AWS.',
+    recognition: {
+      title: 'FY24 Q3 Champs Award',
+      description: 'Awarded for high-impact analytics delivery, automation initiatives, and measurable business outcomes.',
+    },
     highlights: [
       {
         icon: BarChart3,
-        text: 'Designed Power BI dashboards integrating ServiceNow & Azure SQL, achieving 15% SLA improvement',
-        metric: '15%',
+        title: 'Power BI & SLA Impact – 15%',
+        text: 'Designed Power BI dashboards integrating ServiceNow and Azure SQL, improving SLA performance by 15% and enabling data-driven operational decisions.',
       },
       {
         icon: Zap,
-        text: 'Automated ETL pipelines using Python, SQL, and Azure Data Factory, reducing manual reporting by 50%',
-        metric: '50%',
+        title: 'ETL Automation – 50%',
+        text: 'Built and automated end-to-end ETL pipelines using Python, SQL, and Azure Data Factory, reducing manual reporting effort by 50%.',
       },
       {
         icon: Cloud,
-        text: 'Implemented AWS–Azure integration (S3, Lambda, Data Lake) for cross-cloud data workflows',
-        metric: 'Multi-cloud',
-      },
-      {
-        icon: TrendingUp,
-        text: 'Applied Six Sigma methodologies for incident optimization and advanced DAX-based KPI analytics',
-        metric: 'Six Sigma',
+        title: 'Multi-Cloud Analytics',
+        text: 'Implemented AWS–Azure data workflows (S3, Lambda, Data Lake) to enable cross-cloud analytics and scalable data ingestion.',
       },
     ],
+    tags: ['Six Sigma', 'KPI Optimization', 'DAX Analytics'],
   },
   {
     title: 'Associate Professional Software Engineer',
@@ -37,28 +38,29 @@ const experiences = [
     location: 'Bangalore, India',
     period: 'Mar 2020 – Oct 2022',
     duration: '2+ years',
+    signatureImpact: 'Strengthened system reliability and observability through automation, monitoring, and predictive analytics.',
+    recognition: {
+      title: 'FY24 H1 Collaborators Award',
+      description: 'Recognized for cross-team collaboration, delivery excellence, and consistent performance.',
+    },
     highlights: [
       {
         icon: Zap,
-        text: 'Built infrastructure monitoring automation, reducing operational effort by 70%',
-        metric: '70%',
-      },
-      {
-        icon: Database,
-        text: 'Developed centralized multi-cloud log analytics for unified visibility across platforms',
-        metric: 'Unified',
+        title: 'Automation & Monitoring – 70%',
+        text: 'Built infrastructure monitoring automation, reducing operational effort by 70% and improving incident response efficiency.',
       },
       {
         icon: BarChart3,
-        text: 'Implemented predictive analytics on cloud logs and created Power BI & Excel performance dashboards',
-        metric: 'Predictive',
+        title: 'Predictive Analytics & Dashboards',
+        text: 'Implemented predictive analytics on cloud logs and created Power BI and Excel dashboards for performance monitoring.',
       },
       {
         icon: TrendingUp,
-        text: 'Maintained 99.9% system availability through proactive monitoring and incident response',
-        metric: '99.9%',
+        title: 'System Reliability – 99.9%',
+        text: 'Maintained 99.9% system availability through proactive monitoring, alerting, and incident management.',
       },
     ],
+    tags: [],
   },
 ];
 
@@ -69,11 +71,9 @@ const ExperienceSection = () => {
     <section id="experience" className="py-24 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        {/* Gradient Orbs */}
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '-4s' }} />
         
-        {/* Diagonal Lines */}
         <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
           {[...Array(10)].map((_, i) => (
             <div
@@ -87,7 +87,6 @@ const ExperienceSection = () => {
           ))}
         </div>
 
-        {/* Floating Dots */}
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
@@ -129,7 +128,6 @@ const ExperienceSection = () => {
               {index < experiences.length - 1 && (
                 <div className="absolute left-6 md:left-8 top-20 bottom-0 w-px">
                   <div className="h-full w-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
-                  {/* Animated Pulse */}
                   <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-primary to-transparent animate-pulse-glow" />
                 </div>
               )}
@@ -146,7 +144,6 @@ const ExperienceSection = () => {
                       activeIndex === index ? 'text-background' : 'text-primary'
                     }`} />
                   </div>
-                  {/* Glow Ring */}
                   {activeIndex === index && (
                     <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl animate-pulse-glow" />
                   )}
@@ -159,7 +156,7 @@ const ExperienceSection = () => {
                     : 'bg-card/50 border-border hover:border-primary/20'
                 }`}>
                   {/* Header */}
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <h3 className="text-xl md:text-2xl font-bold text-foreground">
@@ -171,7 +168,14 @@ const ExperienceSection = () => {
                           </span>
                         )}
                       </div>
-                      <p className="text-primary font-semibold text-lg">{exp.company}</p>
+                      <div className="flex items-center gap-3">
+                        <img 
+                          src="https://dxc.com/content/dam/dxc/projects/dxc-com/us/images/about-us/newsroom/DXC-Veritcal-Tagline-Full-Color-Dark.png"
+                          alt="DXC Technology"
+                          className="h-6 w-auto object-contain"
+                        />
+                        <p className="text-primary font-semibold text-lg">{exp.company}</p>
+                      </div>
                     </div>
                     <div className="flex flex-col items-end gap-1">
                       <span className="px-4 py-1.5 rounded-full bg-secondary/80 text-sm font-medium text-foreground">
@@ -181,30 +185,53 @@ const ExperienceSection = () => {
                     </div>
                   </div>
 
-                  {/* Highlights Grid */}
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  {/* Signature Impact */}
+                  <p className="text-base font-semibold text-foreground mb-6 leading-relaxed">
+                    {exp.signatureImpact}
+                  </p>
+
+                  {/* Highlights Grid - 3 cards only */}
+                  <div className="grid sm:grid-cols-3 gap-4 mb-6">
                     {exp.highlights.map((highlight, hIndex) => (
                       <div
                         key={hIndex}
                         className="group relative p-4 rounded-xl bg-background/50 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                       >
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                            <highlight.icon className="w-5 h-5 text-primary" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <span className="inline-block px-2 py-0.5 text-xs font-bold text-primary bg-primary/10 rounded mb-2">
-                              {highlight.metric}
+                        <div className="flex flex-col gap-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                              <highlight.icon className="w-4 h-4 text-primary" />
+                            </div>
+                            <span className="text-xs font-bold text-primary">
+                              {highlight.title}
                             </span>
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {highlight.text}
-                            </p>
                           </div>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {highlight.text}
+                          </p>
                         </div>
-                        {/* Hover Arrow */}
-                        <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                       </div>
                     ))}
+                  </div>
+
+                  {/* Tags */}
+                  {exp.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {exp.tags.map((tag, tIndex) => (
+                        <span key={tIndex} className="px-2 py-1 text-xs font-medium bg-secondary/50 border border-border/50 rounded text-muted-foreground">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Recognition */}
+                  <div className="flex items-start gap-3 p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-amber-500/5 border border-yellow-500/20">
+                    <Trophy className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{exp.recognition.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{exp.recognition.description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
