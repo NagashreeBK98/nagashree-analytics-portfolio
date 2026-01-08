@@ -10,6 +10,7 @@ const contactInfo = [
     value: 'bommenahallikumara.n@northeastern.edu',
     href: 'mailto:bommenahallikumara.n@northeastern.edu',
     copyable: true,
+    subtext: null,
   },
   {
     icon: Phone,
@@ -17,6 +18,7 @@ const contactInfo = [
     value: '+1 857 260 8738',
     href: 'tel:+18572608738',
     copyable: true,
+    subtext: null,
   },
   {
     icon: MapPin,
@@ -24,6 +26,7 @@ const contactInfo = [
     value: 'Boston, MA, USA',
     href: null,
     copyable: false,
+    subtext: 'Open to Relocation',
   },
 ];
 
@@ -70,9 +73,15 @@ const ContactSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Let's <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
             Open to discussing data analytics and data engineering opportunities, internships, and collaboration on analytics projects.
           </p>
+          
+          {/* Availability Badge - Centered, larger font */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-base font-medium text-green-400">Available for Summer & Fall 2026 Internships</span>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -108,6 +117,9 @@ const ContactSection = () => {
                         ) : (
                           <p className="text-foreground font-semibold">{item.value}</p>
                         )}
+                        {item.subtext && (
+                          <p className="text-sm mt-0.5" style={{ color: '#9CA3AF' }}>{item.subtext}</p>
+                        )}
                       </div>
                     </div>
                     {item.copyable && (
@@ -126,12 +138,6 @@ const ContactSection = () => {
                   </div>
                 </div>
               ))}
-
-              {/* Availability */}
-              <div className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-sm font-medium text-green-400">Available for Summer & Fall 2026 Internships</span>
-              </div>
 
               {/* Social Media */}
               <div className="pt-4">
@@ -210,7 +216,7 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all outline-none text-foreground resize-none"
-                    placeholder="Your message..."
+                    placeholder="Briefly tell me what you'd like to connect about…"
                   />
                 </div>
 
@@ -226,6 +232,13 @@ const ContactSection = () => {
                 </Button>
               </form>
             </div>
+          </div>
+
+          {/* Professional Principle Line */}
+          <div className="text-center mt-16">
+            <p className="text-sm font-light italic" style={{ color: '#9CA3AF' }}>
+              Focused on building scalable, practical solutions with real-world impact.
+            </p>
           </div>
         </div>
       </div>

@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
 const roles = [
+  "Data Engineer",
   "Analytics Engineer",
-  "Power BI Engineer",
-  "Azure Data Engineer"
+  "Cloud Data Engineer"
 ];
 
 const HeroSection = () => {
@@ -84,21 +84,23 @@ const HeroSection = () => {
               <span className="text-primary font-medium text-sm tracking-wide">Data Analytics Engineer</span>
             </div>
 
-            {/* Name - Single line on desktop */}
+            {/* Name - Single line on desktop with color split */}
             <div className="space-y-1">
-              <h1 className="text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] font-semibold leading-[1.15] tracking-tight">
-                <span className="text-foreground whitespace-nowrap hidden md:inline">
-                  Nagashree Bommenahalli Kumaraswamy
+              <h1 className="text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-semibold leading-[1.15] tracking-tight">
+                {/* Desktop: Single line */}
+                <span className="hidden md:inline whitespace-nowrap">
+                  <span className="text-white">Nagashree</span>{' '}
+                  <span className="text-cyan-400/70">Bommenahalli Kumaraswamy</span>
                 </span>
-                <span className="text-foreground md:hidden">
-                  Nagashree<br />
-                  <span className="text-cyan-400/80">Bommenahalli</span><br />
-                  Kumaraswamy
+                {/* Mobile: Wrap naturally */}
+                <span className="md:hidden">
+                  <span className="text-white">Nagashree</span>{' '}
+                  <span className="text-cyan-400/70">Bommenahalli Kumaraswamy</span>
                 </span>
               </h1>
             </div>
 
-            {/* Animated Role */}
+            {/* Animated Role - Fade animation */}
             <div className="h-7 overflow-hidden">
               <div 
                 className="transition-transform duration-500 ease-out"
@@ -178,10 +180,10 @@ const HeroSection = () => {
               </a>
             </div>
 
-            {/* Availability */}
-            <div className="flex items-center gap-2 pt-1">
-              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-sm text-muted-foreground">Available for Summer & Fall 2026 Internships.</span>
+            {/* Availability - Subtle pill/badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-sm text-green-400/90 font-normal">Available for Summer & Fall 2026 Internships</span>
             </div>
 
             {/* Tech Stack Pills */}

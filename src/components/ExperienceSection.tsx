@@ -1,4 +1,4 @@
-import { Briefcase, TrendingUp, Zap, Cloud, BarChart3, ChevronRight, Sparkles, Award, Trophy } from 'lucide-react';
+import { Briefcase, TrendingUp, Zap, Cloud, BarChart3, Sparkles, Trophy } from 'lucide-react';
 import { useState } from 'react';
 
 const experiences = [
@@ -68,7 +68,7 @@ const ExperienceSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
+    <section id="experience" className="py-24 relative overflow-hidden" style={{ backgroundColor: '#0B1220' }}>
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl animate-float" />
@@ -126,10 +126,10 @@ const ExperienceSection = () => {
             >
               {/* Connection Line */}
               {index < experiences.length - 1 && (
-                <div className="absolute left-6 md:left-8 top-20 bottom-0 w-px">
-                  <div className="h-full w-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
-                  <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-primary to-transparent animate-pulse-glow" />
-                </div>
+                <div 
+                  className="absolute left-6 md:left-8 top-20 bottom-0 w-px"
+                  style={{ backgroundColor: 'rgba(31, 182, 201, 0.4)' }}
+                />
               )}
 
               <div className="flex gap-6 md:gap-8 pb-16 last:pb-0">
@@ -137,29 +137,36 @@ const ExperienceSection = () => {
                 <div className="relative shrink-0">
                   <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                     activeIndex === index
-                      ? 'bg-primary shadow-lg shadow-primary/30 scale-110'
+                      ? 'bg-primary shadow-md shadow-primary/20 scale-110'
                       : 'bg-primary/10 border border-primary/30'
                   }`}>
                     <Briefcase className={`w-6 h-6 md:w-7 md:h-7 transition-colors ${
                       activeIndex === index ? 'text-background' : 'text-primary'
                     }`} />
                   </div>
+                  {/* Subtle active dot indicator */}
                   {activeIndex === index && (
-                    <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl animate-pulse-glow" />
+                    <div 
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
+                      style={{ backgroundColor: '#5EE7F0' }}
+                    />
                   )}
                 </div>
 
                 {/* Content Card */}
-                <div className={`flex-1 rounded-2xl p-6 md:p-8 border transition-all duration-500 ${
-                  activeIndex === index
-                    ? 'bg-gradient-to-br from-primary/10 via-card to-card border-primary/40 shadow-xl shadow-primary/10 scale-[1.02]'
-                    : 'bg-card/50 border-border hover:border-primary/20'
-                }`}>
+                <div 
+                  className={`flex-1 rounded-2xl p-6 md:p-8 border transition-all duration-500 ${
+                    activeIndex === index
+                      ? 'border-primary/30 shadow-lg shadow-primary/5 scale-[1.01]'
+                      : 'border-border/50 hover:border-primary/20'
+                  }`}
+                  style={{ backgroundColor: '#0E1A28' }}
+                >
                   {/* Header */}
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                        <h3 className="text-xl md:text-2xl font-bold" style={{ color: '#EAFBFF' }}>
                           {exp.title}
                         </h3>
                         {index === 0 && (
@@ -178,15 +185,18 @@ const ExperienceSection = () => {
                       </div>
                     </div>
                     <div className="flex flex-col items-end gap-1">
-                      <span className="px-4 py-1.5 rounded-full bg-secondary/80 text-sm font-medium text-foreground">
+                      <span 
+                        className="px-4 py-1.5 rounded-full text-sm font-normal"
+                        style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: '#B6C6D3' }}
+                      >
                         {exp.period}
                       </span>
-                      <span className="text-xs text-muted-foreground">{exp.location}</span>
+                      <span className="text-xs" style={{ color: '#B6C6D3' }}>{exp.location}</span>
                     </div>
                   </div>
 
                   {/* Signature Impact */}
-                  <p className="text-base font-semibold text-foreground mb-6 leading-relaxed">
+                  <p className="text-base font-semibold mb-6 leading-relaxed" style={{ color: '#EAFBFF' }}>
                     {exp.signatureImpact}
                   </p>
 
@@ -195,7 +205,8 @@ const ExperienceSection = () => {
                     {exp.highlights.map((highlight, hIndex) => (
                       <div
                         key={hIndex}
-                        className="group relative p-4 rounded-xl bg-background/50 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                        className="group relative p-4 rounded-xl border border-border/30 hover:border-primary/20 transition-all duration-300"
+                        style={{ backgroundColor: 'rgba(11, 18, 32, 0.5)' }}
                       >
                         <div className="flex flex-col gap-3">
                           <div className="flex items-center gap-2">
@@ -206,7 +217,7 @@ const ExperienceSection = () => {
                               {highlight.title}
                             </span>
                           </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-sm leading-relaxed" style={{ color: '#B6C6D3' }}>
                             {highlight.text}
                           </p>
                         </div>
@@ -218,19 +229,29 @@ const ExperienceSection = () => {
                   {exp.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {exp.tags.map((tag, tIndex) => (
-                        <span key={tIndex} className="px-2 py-1 text-xs font-medium bg-secondary/50 border border-border/50 rounded text-muted-foreground">
+                        <span 
+                          key={tIndex} 
+                          className="px-2 py-1 text-xs font-medium rounded border border-border/30"
+                          style={{ backgroundColor: '#0F2430', color: '#5EE7F0' }}
+                        >
                           {tag}
                         </span>
                       ))}
                     </div>
                   )}
 
-                  {/* Recognition */}
-                  <div className="flex items-start gap-3 p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-amber-500/5 border border-yellow-500/20">
-                    <Trophy className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                  {/* Recognition - Reduced padding */}
+                  <div 
+                    className="flex items-start gap-3 p-3 rounded-xl border"
+                    style={{ 
+                      backgroundColor: '#0F2430',
+                      borderColor: 'rgba(234, 179, 8, 0.15)'
+                    }}
+                  >
+                    <Trophy className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#5EE7F0' }} />
                     <div>
-                      <p className="text-sm font-semibold text-foreground">{exp.recognition.title}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{exp.recognition.description}</p>
+                      <p className="text-sm font-semibold" style={{ color: '#B6C6D3' }}>{exp.recognition.title}</p>
+                      <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{exp.recognition.description}</p>
                     </div>
                   </div>
                 </div>
