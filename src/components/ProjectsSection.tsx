@@ -1,4 +1,4 @@
-import { ExternalLink, Layers, ArrowUpRight, Github } from 'lucide-react';
+import { Layers, ArrowRight, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import projectCustomerSegmentation from '@/assets/project-customer-segmentation.png';
@@ -12,7 +12,7 @@ const projects = [
     subtitle: 'Enterprise end-to-end cloud data engineering & analytics platform',
     image: 'https://raw.githubusercontent.com/NagashreeBK98/herdtrack-azure-data-engineering/main/architecture/herdtrack_architecture.png',
     description: 'Designed and built an Azure-based Bronze–Silver–Gold data architecture using Kaggle datasets and external APIs to address manual cattle monitoring and delayed decision-making, enabling real-time analytics with Databricks, Synapse, and Power BI.',
-    technologies: ['Azure Data Factory', 'Databricks', 'PySpark', 'Azure Data Lake Gen2', 'Azure Synapse', 'Power BI', 'Python', 'SQL', 'Kaggle Datasets', 'REST APIs'],
+    technologies: ['Azure Data Factory', 'Databricks', 'PySpark', 'Azure Data Lake Gen2', 'Azure Synapse', 'Power BI'],
     link: 'https://github.com/NagashreeBK98/herdtrack-azure-data-engineering',
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     subtitle: 'Customer analytics and behavioral segmentation using eCommerce data',
     image: projectCustomerSegmentation,
     description: 'Built a customer segmentation analytics pipeline using RFM (Recency, Frequency, Monetary) analysis and clustering to identify high-value, at-risk, and low-engagement customer groups from eCommerce transaction data.',
-    technologies: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Jupyter Notebook', 'Matplotlib', 'Seaborn', 'Kaggle Dataset'],
+    technologies: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
     link: 'https://github.com/NagashreeBK98/Customer-Segmentation-RFM',
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     subtitle: 'Financial market network analysis using stock price correlations',
     image: projectStockNetwork,
     description: 'Built a correlation-weighted stock network using daily market data to uncover relationships, clusters, and dependencies across major U.S. equities, supporting market structure analysis and diversification insights.',
-    technologies: ['Python', 'Pandas', 'NumPy', 'NetworkX', 'Matplotlib', 'yFinance', 'Jupyter Notebook'],
+    technologies: ['Python', 'Pandas', 'NumPy', 'NetworkX', 'Matplotlib', 'yFinance'],
     link: 'https://github.com/NagashreeBK98/Correlation-Weighted-Stock-Network',
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     subtitle: 'Machine learning–based EEG signal classification for healthcare analytics',
     image: projectEegClassification,
     description: 'Built a machine learning–based EEG signal classification pipeline to detect epileptic seizure activity by preprocessing signals, extracting features, and evaluating models on benchmark EEG datasets.',
-    technologies: ['Python', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Jupyter Notebook', 'CHB-MIT EEG Dataset', 'Bonn EEG Dataset'],
+    technologies: ['Python', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Jupyter Notebook'],
     link: 'https://github.com/NagashreeBK98/EEG-Classification-Model',
   },
   {
@@ -44,7 +44,7 @@ const projects = [
     subtitle: 'Exploratory data analysis and time-series forecasting on real-world crime data',
     image: projectCrimeAnalysis,
     description: 'Analyzed real-world U.S. crime data from 2020–2025 to uncover trends, seasonal patterns, regional variations, and socioeconomic correlations, and applied time-series forecasting to predict future crime trends.',
-    technologies: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Scikit-learn', 'Statsmodels', 'Jupyter Notebook'],
+    technologies: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Scikit-learn', 'Statsmodels'],
     link: 'https://github.com/NagashreeBK98/crime-data-analysis',
   },
 ];
@@ -90,7 +90,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Projects Grid - 3 per row */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -103,58 +103,56 @@ const ProjectsSection = () => {
                   ? 'bg-gradient-to-br from-card via-card to-primary/5 border-primary/40 shadow-xl shadow-primary/10 scale-[1.02]'
                   : 'bg-card/50 border-border hover:border-primary/30'
               }`}>
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                {/* Project Image - Slightly increased brightness */}
+                <div className="relative h-44 overflow-hidden">
                   <img 
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 brightness-110 contrast-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
                 </div>
 
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1">
+                {/* Content - Reduced padding */}
+                <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-1">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-3">
+                  {/* Subtitle - Semi-bold with muted cyan */}
+                  <p className="text-sm font-semibold text-cyan-400/70 mb-2">
                     {project.subtitle}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3 flex-1">
                     {project.description}
                   </p>
 
-                  {/* Technologies */}
-                  <div className="mb-4">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2">Technology Used:</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.technologies.slice(0, 5).map((tech, tIndex) => (
-                        <span
-                          key={tIndex}
-                          className="px-2 py-1 text-xs font-medium rounded bg-secondary/50 border border-border/50 text-muted-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 5 && (
-                        <span className="px-2 py-1 text-xs font-medium rounded bg-primary/10 border border-primary/20 text-primary">
-                          +{project.technologies.length - 5} more
-                        </span>
-                      )}
-                    </div>
+                  {/* Technologies - 6 chips only, no label, no +X more */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.technologies.slice(0, 6).map((tech, tIndex) => (
+                      <span
+                        key={tIndex}
+                        className="px-2 py-1 text-xs font-medium rounded border"
+                        style={{
+                          backgroundColor: 'rgba(255,255,255,0.03)',
+                          borderColor: 'rgba(34, 211, 238, 0.2)',
+                          color: '#9CA3AF'
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Action Button */}
+                  {/* Action Button - More visible with arrow */}
                   <Button 
                     variant="outline" 
                     size="sm" 
                     asChild
-                    className="w-full group/btn"
+                    className="w-full group/btn border-primary/30 hover:border-primary/50 hover:bg-primary/10 text-primary"
                   >
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       View Project Details
-                      <ArrowUpRight className="w-4 h-4 ml-1 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                     </a>
                   </Button>
                 </div>
@@ -175,7 +173,7 @@ const ProjectsSection = () => {
             <span className="text-muted-foreground group-hover:text-foreground transition-colors">
               View more on <span className="text-primary font-semibold">GitHub</span>
             </span>
-            <ArrowUpRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
           </a>
         </div>
       </div>

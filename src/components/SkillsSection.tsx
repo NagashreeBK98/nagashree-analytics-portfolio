@@ -1,35 +1,35 @@
-import { Sparkles, Code2, Cloud, Database, BarChart3, Cpu, Wrench } from 'lucide-react';
+import { Sparkles, Code2, Cloud, Database, BarChart3, Cpu, Zap } from 'lucide-react';
 
 const skillGroups = [
   {
-    title: 'Data Engineering & Analytics',
+    title: 'Programming & Data',
     icon: Code2,
-    skills: ['Python', 'SQL', 'PySpark', 'ETL Pipelines', 'Data Modeling', 'Medallion (Bronze–Silver–Gold) Architecture'],
+    skills: ['Python', 'SQL', 'R', 'Bash', 'Jupyter Notebook'],
   },
   {
     title: 'Cloud & Data Platforms',
     icon: Cloud,
-    skills: ['Azure (Data Factory, Databricks, Synapse Analytics, Data Lake Gen2)', 'AWS (S3, Lambda)'],
+    skills: ['Azure (Data Factory, Databricks, Synapse, ADLS Gen2)', 'AWS (S3, EC2, Lambda, IAM)', 'Linux'],
   },
   {
-    title: 'Databases',
+    title: 'Databases & Storage',
     icon: Database,
     skills: ['MySQL', 'MongoDB', 'Relational & NoSQL Databases'],
   },
   {
     title: 'Analytics & Visualization',
     icon: BarChart3,
-    skills: ['Power BI', 'Tableau', 'DAX', 'Data Visualization', 'Exploratory Data Analysis (EDA)'],
+    skills: ['Power BI', 'Tableau', 'Excel'],
   },
   {
-    title: 'Machine Learning & Data Science',
+    title: 'Big Data & Streaming',
+    icon: Zap,
+    skills: ['Apache Spark', 'Apache Kafka'],
+  },
+  {
+    title: 'Machine Learning & MLOps',
     icon: Cpu,
-    skills: ['Machine Learning', 'MLOps', 'Clustering', 'Time-Series Forecasting'],
-  },
-  {
-    title: 'Tools & Ecosystem',
-    icon: Wrench,
-    skills: ['Databricks', 'Jupyter Notebook', 'Git', 'GitHub', 'REST APIs', 'Kaggle Datasets', 'Linux (VM)', 'Windows'],
+    skills: ['Scikit-learn', 'TensorFlow', 'Time-Series Forecasting', 'Clustering', 'Docker', 'Jenkins'],
   },
 ];
 
@@ -65,27 +65,44 @@ const SkillsSection = () => {
           </p>
         </div>
 
-        {/* Skills Grid */}
+        {/* Skills Grid - 3 per row */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {skillGroups.map((group, index) => (
             <div
               key={index}
-              className="group relative rounded-2xl p-6 border bg-card/50 border-border hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+              className="group relative rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1"
+              style={{
+                backgroundColor: '#111827',
+                borderColor: 'rgba(255, 255, 255, 0.06)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.25)';
+                e.currentTarget.style.boxShadow = '0 0 14px rgba(34, 211, 238, 0.18)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.06)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
             >
-              {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <group.icon className="w-6 h-6 text-primary" />
+              {/* Icon - Small, subtle */}
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <group.icon className="w-5 h-5" style={{ color: '#22D3EE' }} />
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-foreground mb-4">{group.title}</h3>
+              <h3 className="text-lg font-bold mb-4" style={{ color: '#22D3EE' }}>{group.title}</h3>
 
-              {/* Skills */}
+              {/* Skills - Clean text/chips */}
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill, sIndex) => (
                   <span
                     key={sIndex}
-                    className="px-3 py-1.5 text-sm rounded-lg bg-secondary/50 border border-border/50 text-muted-foreground hover:border-primary/30 hover:text-foreground transition-all cursor-default"
+                    className="px-3 py-1.5 text-sm rounded-lg border transition-all cursor-default"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                      borderColor: 'rgba(255, 255, 255, 0.08)',
+                      color: '#9CA3AF'
+                    }}
                   >
                     {skill}
                   </span>
