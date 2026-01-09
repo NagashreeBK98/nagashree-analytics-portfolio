@@ -216,9 +216,9 @@ const HeroSection = () => {
               {/* Inner Circle with Photo */}
               <div className="absolute inset-5 rounded-full bg-gradient-to-br from-card via-card to-secondary border-2 border-border/50 overflow-hidden shadow-2xl shadow-primary/20">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop&crop=face"
+                  src="https://i.postimg.cc/j2sBMy86/Whats-App-Image-2026-01-07-at-20-36-23.jpg"
                   alt="Nagashree B K - Data Analytics Professional"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
               </div>
