@@ -14,7 +14,7 @@ const educationData = [
   {
     degree: 'Bachelor of Engineering in Telecommunication',
     institution: 'Dayananda Sagar College of Engineering',
-    logo: 'https://dsu.edu.in/virtual-tour/images/thumbnail.png',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCG2rmJHXi1ZfP6UXmXLwlcyWeX0DUAC3gFw&s',
     location: 'Bangalore, India',
     period: '2019',
     status: null,

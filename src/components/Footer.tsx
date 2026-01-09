@@ -43,11 +43,12 @@ const Footer = () => {
           {/* Navigation */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             {[
-              { label: 'Home', href: '#home' },
-              { label: 'About', href: '#about' },
+              { label: 'About', href: '#home' },
               { label: 'Experience', href: '#experience' },
-              { label: 'Skills', href: '#skills' },
               { label: 'Projects', href: '#projects' },
+              { label: 'Skills', href: '#skills' },
+              { label: 'Certifications', href: '#certifications' },
+              { label: 'Education', href: '#education' },
               { label: 'Contact', href: '#contact' },
             ].map((link, index) => (
               <a
