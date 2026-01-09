@@ -8,7 +8,7 @@ const certifications = [
   },
   {
     name: 'Microsoft Azure Fundamentals (AZ-900)',
-    logo: 'https://petri.com/wp-content/uploads/petri-imported-images/1_FELQr_PxJW0CzDjdum9ysw.jpeg',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png',
     credentialLink: null,
   },
   {
