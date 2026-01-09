@@ -37,6 +37,9 @@ const CertificationsSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             <span className="gradient-text">Certifications</span>
           </h2>
+          <p className="text-sm max-w-2xl mx-auto" style={{ color: '#9CA3AF' }}>
+            Industry-recognized certifications validating cloud, analytics, and process excellence.
+          </p>
         </div>
 
         {/* Certifications Grid - 3 per row, matching Projects style */}
@@ -58,8 +61,8 @@ const CertificationsSection = () => {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              {/* Logo - Top center, slightly larger */}
-              <div className="w-16 h-16 rounded-xl bg-white p-2 flex items-center justify-center mb-4">
+              {/* Logo - Top center, balanced size */}
+              <div className="w-14 h-14 rounded-xl bg-white p-2 flex items-center justify-center mb-4">
                 <img 
                   src={cert.logo}
                   alt={cert.name}
