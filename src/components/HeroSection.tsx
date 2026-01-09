@@ -1,4 +1,4 @@
-import { ArrowDown, Download, Mail, ExternalLink, Sparkles, Linkedin, Github } from 'lucide-react';
+import { ArrowDown, Download, Mail, ExternalLink, Sparkles, Linkedin, Github, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -221,6 +221,18 @@ const HeroSection = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
+              </div>
+              
+              {/* 5+ Years Experience Badge */}
+              <div 
+                className="absolute bottom-6 right-6 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full z-20"
+                style={{ 
+                  backgroundColor: 'rgba(11, 15, 20, 0.9)',
+                  border: '1px solid rgba(245, 194, 107, 0.3)'
+                }}
+              >
+                <Trophy className="w-3.5 h-3.5" style={{ color: '#F5C26B' }} />
+                <span className="text-xs font-medium" style={{ color: '#F5C26B' }}>5+ yrs</span>
               </div>
 
               {/* Orbiting Dots */}

@@ -240,15 +240,16 @@ const ExperienceSection = () => {
                     </div>
                   )}
 
-                  {/* Recognition - Reduced padding */}
+                  {/* Recognition - Gold trophy styling */}
                   <div 
                     className="flex items-start gap-3 p-3 rounded-xl border"
                     style={{ 
                       backgroundColor: '#0F2430',
-                      borderColor: 'rgba(234, 179, 8, 0.15)'
+                      borderColor: 'rgba(245, 194, 107, 0.2)',
+                      boxShadow: '0 0 10px rgba(245, 194, 107, 0.08)'
                     }}
                   >
-                    <Trophy className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#5EE7F0' }} />
+                    <Trophy className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#F5C26B' }} />
                     <div>
                       <p className="text-sm font-semibold" style={{ color: '#B6C6D3' }}>{exp.recognition.title}</p>
                       <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{exp.recognition.description}</p>

@@ -6,10 +6,11 @@ const educationData = [
     institution: 'Northeastern University',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bb/NU_RGB_seal_R.png',
     location: 'Boston, MA, USA',
-    period: 'Expected 2026',
+    period: 'Expected 2027',
     status: 'Currently Pursuing',
     current: true,
     coursework: 'Relevant Coursework: Data Management for Analytics, Foundations of Data Analytics Engineering, Computational & Data Visualization, Machine Learning Operations, Data Mining',
+    bgColor: '#0B1F2E',
   },
   {
     degree: 'Bachelor of Engineering in Telecommunication',
@@ -17,9 +18,10 @@ const educationData = [
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCG2rmJHXi1ZfP6UXmXLwlcyWeX0DUAC3gFw&s',
     location: 'Bangalore, India',
     period: '2019',
-    status: null,
+    status: 'Completed',
     current: false,
     coursework: 'Foundational Coursework: Probability & Statistics, Engineering Mathematics, Programming (C, C++, Python), Internet of Things (IoT), Digital Signal Processing',
+    bgColor: '#0E2A26',
   },
 ];
 
@@ -87,8 +89,8 @@ const EducationSection = () => {
                       : 'border-opacity-20 hover:border-opacity-30'
                   }`}
                   style={{
-                    backgroundColor: edu.current ? '#0F1E2E' : '#0E1A28',
-                    borderColor: edu.current ? '#1FB6C9' : '#1AA3B3',
+                    backgroundColor: edu.bgColor,
+                    borderColor: '#1FB6C9',
                   }}
                 >
                   {/* Glow Effect for current */}
@@ -97,12 +99,12 @@ const EducationSection = () => {
                   )}
                   
                   <div className="relative">
-                    {edu.current && (
+                    {edu.status && (
                       <span 
                         className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full mb-4"
                         style={{ backgroundColor: 'rgba(31, 182, 201, 0.2)', color: '#5EE7F0' }}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        {edu.current && <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />}
                         {edu.status}
                       </span>
                     )}
