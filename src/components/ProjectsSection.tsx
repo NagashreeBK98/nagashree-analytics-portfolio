@@ -143,12 +143,11 @@ const ProjectsSection = () => {
                     ))}
                   </div>
 
-                  {/* Action Button - More visible with arrow */}
+                  {/* Action Button - Filled primary style */}
                   <Button 
-                    variant="outline" 
                     size="sm" 
                     asChild
-                    className="w-full group/btn border-primary/30 hover:border-primary/50 hover:bg-primary/10 text-primary"
+                    className="w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground"
                   >
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       View Project Details

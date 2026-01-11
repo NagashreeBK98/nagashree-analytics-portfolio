@@ -31,6 +31,7 @@ const experiences = [
       },
     ],
     tags: ['Six Sigma', 'KPI Optimization', 'DAX Analytics'],
+    bgColor: '#0E2A3A',
   },
   {
     title: 'Associate Professional Software Engineer',
@@ -61,6 +62,7 @@ const experiences = [
       },
     ],
     tags: [],
+    bgColor: '#0B1F2E',
   },
 ];
 
@@ -160,7 +162,7 @@ const ExperienceSection = () => {
                       ? 'border-primary/30 shadow-lg shadow-primary/5 scale-[1.01]'
                       : 'border-border/50 hover:border-primary/20'
                   }`}
-                  style={{ backgroundColor: '#0E1A28' }}
+                  style={{ backgroundColor: exp.bgColor }}
                 >
                   {/* Header */}
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">

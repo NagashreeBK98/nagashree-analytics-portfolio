@@ -6,33 +6,32 @@ const educationData = [
     institution: 'Northeastern University',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bb/NU_RGB_seal_R.png',
     location: 'Boston, MA',
-    period: 'Sept 2023 - Dec 2025',
-    status: 'In Progress',
-    gpa: '3.8',
+    period: 'Sep 2025 – May 2027',
+    status: 'Currently Pursuing',
     current: true,
-    coursework: ['Data Mining', 'Data Management for Analytics', 'Machine Learning Operations', 'Natural Language Processing', 'Neural Networks'],
+    coursework: ['Data Management for Analytics', 'Data Mining', 'Machine Learning & Operations'],
     bgColor: '#0B1F2E',
   },
   {
-    degree: 'Bachelor of Engineering in Telecommunication',
+    degree: 'Bachelor of Technology in Information Technology',
     institution: 'Dayananda Sagar College of Engineering',
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCG2rmJHXi1ZfP6UXmXLwlcyWeX0DUAC3gFw&s',
     location: 'Bangalore, India',
-    period: 'Jul 2015 - Jul 2019',
+    period: 'Aug 2016 – Jul 2019',
     status: 'Completed',
-    gpa: '3.8',
     current: false,
-    coursework: ['Operating Systems', 'Data Structures and Algorithms', 'Database Management', 'Computer Networks', 'Software Engineering'],
+    coursework: ['Probability & Statistics', 'Programming (C, C++, Python)', 'Engineering Mathematics'],
     bgColor: '#0E2A26',
   },
 ];
 
 // Decorative graduation caps positioned around the timeline
 const decorativeCaps = [
-  { top: '5%', left: '15%', size: 'w-12 h-12', opacity: 'opacity-20', rotation: '-rotate-12' },
-  { top: '25%', right: '10%', size: 'w-16 h-16', opacity: 'opacity-15', rotation: 'rotate-6' },
-  { top: '55%', left: '8%', size: 'w-14 h-14', opacity: 'opacity-20', rotation: 'rotate-12' },
-  { top: '75%', right: '15%', size: 'w-10 h-10', opacity: 'opacity-25', rotation: '-rotate-6' },
+  { top: '8%', left: '8%', size: 'w-14 h-14', opacity: 'opacity-30', rotation: '-rotate-12' },
+  { top: '15%', right: '12%', size: 'w-12 h-12', opacity: 'opacity-25', rotation: 'rotate-6' },
+  { top: '55%', left: '5%', size: 'w-16 h-16', opacity: 'opacity-20', rotation: 'rotate-12' },
+  { top: '70%', right: '8%', size: 'w-10 h-10', opacity: 'opacity-35', rotation: '-rotate-6' },
+  { bottom: '10%', left: '15%', size: 'w-12 h-12', opacity: 'opacity-25', rotation: 'rotate-3' },
 ];
 
 const EducationSection = () => {
@@ -48,8 +47,8 @@ const EducationSection = () => {
       {decorativeCaps.map((cap, index) => (
         <div
           key={index}
-          className={`absolute ${cap.size} ${cap.opacity} ${cap.rotation} hidden md:block`}
-          style={{ top: cap.top, left: cap.left, right: cap.right }}
+          className={`absolute ${cap.size} ${cap.opacity} ${cap.rotation} hidden md:block pointer-events-none`}
+          style={{ top: cap.top, left: cap.left, right: cap.right, bottom: cap.bottom }}
         >
           <GraduationCap className="w-full h-full" style={{ color: '#1FB6C9' }} />
         </div>
@@ -70,37 +69,62 @@ const EducationSection = () => {
           </p>
         </div>
 
-        {/* Education Timeline - Vertical layout with timeline on left, cards on right */}
-        <div className="max-w-5xl mx-auto relative">
-          {/* Vertical Timeline Line */}
+        {/* Staggered Education Timeline */}
+        <div className="max-w-6xl mx-auto relative">
+          {/* Vertical Timeline Line - Centered */}
           <div 
-            className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 hidden md:block"
+            className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 hidden md:block"
             style={{ backgroundColor: 'rgba(31, 182, 201, 0.4)' }}
           />
 
-          <div className="space-y-12 md:space-y-16">
+          {/* Decorative Graduation Cap on Timeline Center */}
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center z-10"
+            style={{ top: '50%', transform: 'translate(-50%, -50%)' }}
+          >
+            <div className="animate-float" style={{ animationDuration: '4s' }}>
+              <div 
+                className="w-12 h-12 rounded-full flex items-center justify-center"
+                style={{ 
+                  backgroundColor: 'rgba(31, 182, 201, 0.2)',
+                  border: '2px solid rgba(31, 182, 201, 0.5)'
+                }}
+              >
+                <GraduationCap className="w-6 h-6" style={{ color: '#5EE7F0' }} />
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-8 md:space-y-0">
             {educationData.map((edu, index) => (
-              <div key={index} className="relative flex items-start">
+              <div 
+                key={index} 
+                className={`relative flex items-start ${
+                  index === 0 
+                    ? 'md:justify-start md:pr-[52%]' 
+                    : 'md:justify-end md:pl-[52%] md:mt-16'
+                }`}
+              >
                 {/* Timeline Dot */}
                 <div 
-                  className="absolute left-4 md:left-8 -translate-x-1/2 w-4 h-4 rounded-full border-2 hidden md:block z-10"
+                  className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 hidden md:block z-10"
                   style={{
                     backgroundColor: edu.current ? '#5EE7F0' : '#0E1A28',
                     borderColor: edu.current ? '#5EE7F0' : '#2C7F8A',
-                    top: '2rem'
+                    top: index === 0 ? '2rem' : '2rem',
                   }}
                 />
 
-                {/* Card - Aligned to right of timeline */}
+                {/* Card */}
                 <div 
-                  className="w-full md:ml-20 rounded-3xl p-6 md:p-8 border transition-all duration-500 hover:scale-[1.01]"
+                  className="w-full rounded-3xl p-6 md:p-8 border transition-all duration-500 hover:scale-[1.01]"
                   style={{
                     backgroundColor: edu.bgColor,
-                    borderColor: edu.current ? 'rgba(31, 182, 201, 0.4)' : 'rgba(31, 182, 201, 0.25)',
-                    boxShadow: edu.current ? '0 0 30px rgba(31, 182, 201, 0.1)' : 'none',
+                    borderColor: 'rgba(31, 182, 201, 0.3)',
+                    boxShadow: edu.current ? '0 0 30px rgba(31, 182, 201, 0.1)' : '0 0 20px rgba(31, 182, 201, 0.05)',
                   }}
                 >
-                  {/* Status and GPA Badges */}
+                  {/* Status Badge */}
                   <div className="flex flex-wrap gap-3 mb-5">
                     <span 
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full"
@@ -112,16 +136,6 @@ const EducationSection = () => {
                     >
                       {edu.current && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />}
                       {edu.status}
-                    </span>
-                    <span 
-                      className="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full"
-                      style={{ 
-                        backgroundColor: 'rgba(34, 211, 238, 0.1)', 
-                        color: '#22D3EE',
-                        border: '1px solid rgba(34, 211, 238, 0.25)'
-                      }}
-                    >
-                      GPA: {edu.gpa}
                     </span>
                   </div>
 
@@ -204,24 +218,6 @@ const EducationSection = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Decorative Graduation Cap on Timeline - Between cards */}
-          <div 
-            className="absolute left-4 md:left-8 -translate-x-1/2 hidden md:flex items-center justify-center"
-            style={{ top: '50%', transform: 'translate(-50%, -50%)' }}
-          >
-            <div className="animate-float" style={{ animationDuration: '4s' }}>
-              <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center"
-                style={{ 
-                  backgroundColor: 'rgba(31, 182, 201, 0.15)',
-                  border: '1px solid rgba(31, 182, 201, 0.3)'
-                }}
-              >
-                <GraduationCap className="w-5 h-5" style={{ color: '#5EE7F0' }} />
-              </div>
-            </div>
           </div>
         </div>
       </div>
