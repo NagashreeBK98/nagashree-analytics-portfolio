@@ -70,22 +70,25 @@ const SkillsSection = () => {
           {skillGroups.map((group, index) => (
             <div
               key={index}
-              className="group relative rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
               style={{
-                backgroundColor: '#111827',
-                borderColor: 'rgba(255, 255, 255, 0.06)',
+                backgroundColor: '#0B1F2E',
+                border: '1px solid rgba(34, 211, 238, 0.15)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.25)';
-                e.currentTarget.style.boxShadow = '0 0 14px rgba(34, 211, 238, 0.18)';
+                e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.35)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(34, 211, 238, 0.12)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.06)';
+                e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.15)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
               {/* Icon - Small, subtle */}
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <div 
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
+                style={{ backgroundColor: '#0F2A3A' }}
+              >
                 <group.icon className="w-5 h-5" style={{ color: '#22D3EE' }} />
               </div>
 
@@ -97,11 +100,11 @@ const SkillsSection = () => {
                 {group.skills.map((skill, sIndex) => (
                   <span
                     key={sIndex}
-                    className="px-3 py-1.5 text-sm rounded-lg border transition-all cursor-default"
+                    className="px-3 py-1.5 text-sm rounded-lg transition-all cursor-default"
                     style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                      borderColor: 'rgba(255, 255, 255, 0.08)',
-                      color: '#9CA3AF'
+                      backgroundColor: 'rgba(15, 42, 58, 0.8)',
+                      border: '1px solid rgba(34, 211, 238, 0.1)',
+                      color: '#B6C6D3'
                     }}
                   >
                     {skill}

@@ -1,7 +1,8 @@
 import { Mail, Phone, MapPin, Linkedin, Github, Copy, Check, Send, ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import emailjs from '@emailjs/browser';
 
 const contactInfo = [
   {
@@ -34,6 +35,7 @@ const ContactSection = () => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleCopy = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
@@ -42,16 +44,31 @@ const ContactSection = () => {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        'service_3i29qyq',
+        'template_onf69so',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'bommenahallikumara.n@northeastern.edu',
+        },
+        '2Kvw4TfaPPcKecmWO'
+      );
+      
       toast.success('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast.error('Failed to send message. Please try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -174,7 +191,7 @@ const ContactSection = () => {
                 Send a Message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                     Name <span className="text-primary">*</span>
@@ -182,6 +199,7 @@ const ContactSection = () => {
                   <input
                     type="text"
                     id="name"
+                    name="from_name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -197,6 +215,7 @@ const ContactSection = () => {
                   <input
                     type="email"
                     id="email"
+                    name="from_email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -211,6 +230,7 @@ const ContactSection = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     required
                     rows={5}
                     value={formData.message}
