@@ -10,7 +10,7 @@ const educationData = [
     status: 'Currently Pursuing',
     current: true,
     coursework: ['Data Management for Analytics', 'Data Mining', 'Machine Learning & Operations'],
-    bgColor: '#0B1F2E',
+    bgColor: '#0E2A26', // Swapped: now teal/green
   },
   {
     degree: 'Bachelor of Technology in Information Technology',
@@ -21,17 +21,16 @@ const educationData = [
     status: 'Completed',
     current: false,
     coursework: ['Probability & Statistics', 'Programming (C, C++, Python)', 'Engineering Mathematics'],
-    bgColor: '#0E2A26',
+    bgColor: '#0B1F2E', // Swapped: now navy
   },
 ];
 
-// Decorative graduation caps positioned around the timeline
+// Decorative graduation caps - positioned in specific empty gaps
 const decorativeCaps = [
-  { top: '8%', left: '8%', size: 'w-14 h-14', opacity: 'opacity-30', rotation: '-rotate-12' },
-  { top: '15%', right: '12%', size: 'w-12 h-12', opacity: 'opacity-25', rotation: 'rotate-6' },
-  { top: '55%', left: '5%', size: 'w-16 h-16', opacity: 'opacity-20', rotation: 'rotate-12' },
-  { top: '70%', right: '8%', size: 'w-10 h-10', opacity: 'opacity-35', rotation: '-rotate-6' },
-  { bottom: '10%', left: '15%', size: 'w-12 h-12', opacity: 'opacity-25', rotation: 'rotate-3' },
+  // Right gap between Master's and Bachelor's cards
+  { top: '48%', right: '6%', size: 'w-16 h-16', opacity: 'opacity-35', rotation: 'rotate-6' },
+  // Lower-left gap below Master's card
+  { top: '72%', left: '6%', size: 'w-14 h-14', opacity: 'opacity-30', rotation: '-rotate-12' },
 ];
 
 const EducationSection = () => {
@@ -48,7 +47,7 @@ const EducationSection = () => {
         <div
           key={index}
           className={`absolute ${cap.size} ${cap.opacity} ${cap.rotation} hidden md:block pointer-events-none`}
-          style={{ top: cap.top, left: cap.left, right: cap.right, bottom: cap.bottom }}
+          style={{ top: cap.top, left: cap.left, right: cap.right }}
         >
           <GraduationCap className="w-full h-full" style={{ color: '#1FB6C9' }} />
         </div>

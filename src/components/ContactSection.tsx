@@ -1,8 +1,11 @@
 import { Mail, Phone, MapPin, Linkedin, Github, Copy, Check, Send, ArrowUpRight } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS with public key
+emailjs.init('2Kvw4TfaPPcKecmWO');
 
 const contactInfo = [
   {
@@ -46,26 +49,25 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formRef.current) return;
+    
     setIsSubmitting(true);
     
     try {
-      await emailjs.send(
+      const result = await emailjs.sendForm(
         'service_3i29qyq',
         'template_onf69so',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'bommenahallikumara.n@northeastern.edu',
-        },
+        formRef.current,
         '2Kvw4TfaPPcKecmWO'
       );
       
-      toast.success('Message sent successfully!');
+      console.log('EmailJS Success:', result);
+      toast.success('Message sent successfully! I will get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Failed to send message. Please try again or email me directly.');
     } finally {
       setIsSubmitting(false);
     }

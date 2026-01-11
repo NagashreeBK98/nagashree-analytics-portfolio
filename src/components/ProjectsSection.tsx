@@ -143,13 +143,22 @@ const ProjectsSection = () => {
                     ))}
                   </div>
 
-                  {/* Action Button - Filled primary style */}
+                  {/* Action Button - Muted primary style */}
                   <Button 
                     size="sm" 
                     asChild
-                    className="w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="w-full group/btn text-primary-foreground border-0"
+                    style={{
+                      backgroundColor: 'rgba(31, 182, 201, 0.25)',
+                      color: '#B6C6D3'
+                    }}
                   >
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                    >
                       View Project Details
                       <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                     </a>
