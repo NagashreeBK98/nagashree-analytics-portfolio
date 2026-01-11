@@ -134,7 +134,7 @@ const ExperienceSection = () => {
                 />
               )}
 
-              <div className="flex gap-6 md:gap-8 pb-16 last:pb-0">
+              <div className="flex gap-6 md:gap-8 pb-20 last:pb-0">
                 {/* Timeline Node */}
                 <div className="relative shrink-0">
                   <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
@@ -244,7 +244,7 @@ const ExperienceSection = () => {
 
                   {/* Recognition - Gold trophy styling */}
                   <div 
-                    className="flex items-start gap-3 p-3 rounded-xl border"
+                    className="flex items-start gap-3 p-3 rounded-xl border mt-2"
                     style={{ 
                       backgroundColor: '#0F2430',
                       borderColor: 'rgba(245, 194, 107, 0.2)',
