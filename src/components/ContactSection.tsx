@@ -2,10 +2,24 @@ import { Mail, Phone, MapPin, Linkedin, Github, Copy, Check, Send, ArrowUpRight 
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import emailjs from '@emailjs/browser';
 
-// Initialize EmailJS with public key
-emailjs.init('2Kvw4TfaPPcKecmWO');
+declare global {
+  interface Window {
+    emailjs?: {
+      init: (publicKey: string) => void;
+      sendForm: (
+        serviceId: string,
+        templateId: string,
+        form: HTMLFormElement,
+        publicKey?: string
+      ) => Promise<{ status: number; text: string }>;
+    };
+  }
+}
+
+const EMAILJS_PUBLIC_KEY = '2Kvw4TfaPPcKecmWO';
+const EMAILJS_SERVICE_ID = 'service_3i29qyq';
+const EMAILJS_TEMPLATE_ID = 'template_onf69so';
 
 const contactInfo = [
   {
@@ -40,6 +54,12 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
+  useEffect(() => {
+    // Initialize EmailJS from CDN once the component mounts.
+    // If this warns in console, it means the CDN script didn't load.
+    window.emailjs?.init(EMAILJS_PUBLIC_KEY);
+  }, []);
+
   const handleCopy = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
     setCopiedIndex(index);
@@ -55,11 +75,15 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const result = await emailjs.sendForm(
-        'service_3i29qyq',
-        'template_5uoi2eq',
+      if (!window.emailjs?.sendForm) {
+        throw new Error('EmailJS failed to load. Please refresh and try again.');
+      }
+
+      const result = await window.emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         formRef.current,
-        '2Kvw4TfaPPcKecmWO'
+        EMAILJS_PUBLIC_KEY
       );
       
       console.log('EmailJS Success:', result);
@@ -201,7 +225,7 @@ const ContactSection = () => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="from_name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -217,7 +241,7 @@ const ContactSection = () => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="from_email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
