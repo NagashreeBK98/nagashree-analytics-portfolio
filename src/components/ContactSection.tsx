@@ -19,7 +19,7 @@ declare global {
 
 const EMAILJS_PUBLIC_KEY = '2Kvw4TfaPPcKecmWO';
 const EMAILJS_SERVICE_ID = 'service_3i29qyq';
-const EMAILJS_TEMPLATE_ID = 'template_onf69so';
+const EMAILJS_TEMPLATE_ID = 'template_5uoi2eq';
 
 const contactInfo = [
   {
