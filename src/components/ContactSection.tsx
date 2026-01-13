@@ -57,7 +57,7 @@ const ContactSection = () => {
     try {
       const result = await emailjs.sendForm(
         'service_3i29qyq',
-        'template_onf69so',
+        'template_5uoi2eq',
         formRef.current,
         '2Kvw4TfaPPcKecmWO'
       );
@@ -201,7 +201,7 @@ const ContactSection = () => {
                   <input
                     type="text"
                     id="name"
-                    name="from_name"
+                    name="name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -217,7 +217,7 @@ const ContactSection = () => {
                   <input
                     type="email"
                     id="email"
-                    name="from_email"
+                    name="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
