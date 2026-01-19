@@ -25,12 +25,13 @@ const educationData = [
   },
 ];
 
-// Decorative graduation caps - positioned in specific empty gaps with larger size
+// Decorative graduation caps - positioned OPPOSITE to each card on the timeline
+// Card on LEFT -> Cap on RIGHT, Card on RIGHT -> Cap on LEFT
 const decorativeCaps = [
-  // Right gap between Master's and Bachelor's cards
-  { top: '45%', right: '4%', size: 'w-20 h-20', opacity: 'opacity-40', rotation: 'rotate-6', delay: '0s' },
-  // Lower-left gap below Master's card
-  { top: '70%', left: '4%', size: 'w-18 h-18', opacity: 'opacity-35', rotation: '-rotate-12', delay: '1s' },
+  // Master's card is on LEFT, so cap goes on RIGHT side, vertically centered with the first card
+  { top: '18%', right: '12%', size: 'w-24 h-24', opacity: 'opacity-50', rotation: 'rotate-6', delay: '0s' },
+  // Bachelor's card is on RIGHT, so cap goes on LEFT side, vertically centered with the second card
+  { top: '65%', left: '12%', size: 'w-24 h-24', opacity: 'opacity-50', rotation: '-rotate-6', delay: '1s' },
 ];
 
 const EducationSection = () => {
