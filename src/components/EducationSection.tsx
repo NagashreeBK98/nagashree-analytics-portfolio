@@ -25,12 +25,12 @@ const educationData = [
   },
 ];
 
-// Decorative graduation caps - positioned in specific empty gaps
+// Decorative graduation caps - positioned in specific empty gaps with larger size
 const decorativeCaps = [
   // Right gap between Master's and Bachelor's cards
-  { top: '48%', right: '6%', size: 'w-16 h-16', opacity: 'opacity-35', rotation: 'rotate-6' },
+  { top: '45%', right: '4%', size: 'w-20 h-20', opacity: 'opacity-40', rotation: 'rotate-6', delay: '0s' },
   // Lower-left gap below Master's card
-  { top: '72%', left: '6%', size: 'w-14 h-14', opacity: 'opacity-30', rotation: '-rotate-12' },
+  { top: '70%', left: '4%', size: 'w-18 h-18', opacity: 'opacity-35', rotation: '-rotate-12', delay: '1s' },
 ];
 
 const EducationSection = () => {
@@ -42,12 +42,18 @@ const EducationSection = () => {
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
       </div>
 
-      {/* Decorative Graduation Caps */}
+      {/* Decorative Graduation Caps with Animation */}
       {decorativeCaps.map((cap, index) => (
         <div
           key={index}
-          className={`absolute ${cap.size} ${cap.opacity} ${cap.rotation} hidden md:block pointer-events-none`}
-          style={{ top: cap.top, left: cap.left, right: cap.right }}
+          className={`absolute ${cap.size} ${cap.opacity} ${cap.rotation} hidden md:block pointer-events-none animate-float`}
+          style={{ 
+            top: cap.top, 
+            left: cap.left, 
+            right: cap.right,
+            animationDelay: cap.delay,
+            animationDuration: '5s'
+          }}
         >
           <GraduationCap className="w-full h-full" style={{ color: '#1FB6C9' }} />
         </div>
@@ -76,20 +82,20 @@ const EducationSection = () => {
             style={{ backgroundColor: 'rgba(31, 182, 201, 0.4)' }}
           />
 
-          {/* Decorative Graduation Cap on Timeline Center */}
+          {/* Decorative Graduation Cap on Timeline Center - Larger with pulse animation */}
           <div 
             className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center z-10"
             style={{ top: '50%', transform: 'translate(-50%, -50%)' }}
           >
             <div className="animate-float" style={{ animationDuration: '4s' }}>
               <div 
-                className="w-12 h-12 rounded-full flex items-center justify-center"
+                className="w-14 h-14 rounded-full flex items-center justify-center animate-pulse-glow"
                 style={{ 
                   backgroundColor: 'rgba(31, 182, 201, 0.2)',
                   border: '2px solid rgba(31, 182, 201, 0.5)'
                 }}
               >
-                <GraduationCap className="w-6 h-6" style={{ color: '#5EE7F0' }} />
+                <GraduationCap className="w-7 h-7" style={{ color: '#5EE7F0' }} />
               </div>
             </div>
           </div>
