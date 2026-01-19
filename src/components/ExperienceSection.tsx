@@ -9,7 +9,7 @@ const experiences = [
     period: 'Nov 2022 – Jul 2025',
     duration: '2+ years',
     signatureImpact: 'From raw ingestion to executive dashboards, owned and scaled cloud analytics pipelines across Azure and AWS.',
-    techStack: ['Python', 'SQL', 'Power BI', 'Azure Data Factory', 'Azure SQL', 'AWS S3', 'AWS Lambda', 'ServiceNow', 'DAX', 'Git'],
+    techStack: 'Python · SQL · Power BI · Azure Data Factory · Azure SQL · AWS (S3, Lambda) · Git',
     recognition: {
       title: 'FY24 Q3 Champs Award',
       description: 'Awarded for high-impact analytics delivery, automation initiatives, and measurable business outcomes.',
@@ -31,7 +31,6 @@ const experiences = [
         text: 'Implemented AWS–Azure data workflows (S3, Lambda, Data Lake) to enable cross-cloud analytics and scalable data ingestion.',
       },
     ],
-    tags: ['Six Sigma', 'KPI Optimization', 'DAX Analytics'],
     bgColor: '#0E2A3A',
   },
   {
@@ -41,7 +40,7 @@ const experiences = [
     period: 'Mar 2020 – Oct 2022',
     duration: '2+ years',
     signatureImpact: 'Strengthened system reliability and observability through automation, monitoring, and predictive analytics.',
-    techStack: ['Python', 'SQL', 'Power BI', 'Excel', 'Azure Monitor', 'Cloud Logging', 'Automation Scripts', 'Incident Management', 'Git'],
+    techStack: 'Python · SQL · Excel · Power BI · Servers & Clusters · Azure Monitor · ServiceNow · AWS',
     recognition: {
       title: 'FY24 H1 Collaborators Award',
       description: 'Recognized for cross-team collaboration, delivery excellence, and consistent performance.',
@@ -63,7 +62,6 @@ const experiences = [
         text: 'Maintained 99.9% system availability through proactive monitoring, alerting, and incident management.',
       },
     ],
-    tags: [],
     bgColor: '#0B1F2E',
   },
 ];
@@ -120,7 +118,13 @@ const ExperienceSection = () => {
         </div>
 
         {/* Experience Timeline */}
-        <div className="max-w-6xl mx-auto space-y-10">
+        <div className="max-w-6xl mx-auto space-y-10 relative">
+          {/* Vertical Timeline Line */}
+          <div 
+            className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 hidden md:block"
+            style={{ backgroundColor: 'rgba(31, 182, 201, 0.3)' }}
+          />
+          
           {experiences.map((exp, index) => (
             <div
               key={index}
@@ -196,29 +200,10 @@ const ExperienceSection = () => {
                     {exp.signatureImpact}
                   </p>
 
-                  {/* Tech Stack */}
-                  <div className="mb-5">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#9CA3AF' }}>
-                        Tech Stack
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {exp.techStack.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2 py-0.5 text-xs font-medium rounded"
-                          style={{ 
-                            backgroundColor: 'rgba(31, 182, 201, 0.1)',
-                            color: '#5EE7F0',
-                            border: '1px solid rgba(31, 182, 201, 0.2)'
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  {/* Tech Stack - Single muted line */}
+                  <p className="text-sm mb-5" style={{ color: '#9CA3AF' }}>
+                    <span className="font-medium">Tech Stack:</span> {exp.techStack}
+                  </p>
 
                   {/* Highlights Grid - 3 cards only */}
                   <div className="grid sm:grid-cols-3 gap-3 mb-5">
@@ -245,20 +230,6 @@ const ExperienceSection = () => {
                     ))}
                   </div>
 
-                  {/* Tags */}
-                  {exp.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {exp.tags.map((tag, tIndex) => (
-                        <span 
-                          key={tIndex} 
-                          className="px-2 py-1 text-xs font-medium rounded border border-border/30"
-                          style={{ backgroundColor: '#0F2430', color: '#5EE7F0' }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
 
                   {/* Recognition - Gold trophy styling */}
                   <div 
