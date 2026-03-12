@@ -223,21 +223,16 @@ const ExperienceSection = () => {
                     {exp.highlights.map((highlight, hIndex) => (
                       <div
                         key={hIndex}
-                        className="group relative p-4 rounded-xl border border-border/30 hover:border-primary/20 transition-all duration-300"
+                        className="group relative p-3 rounded-xl border border-border/30 hover:border-primary/20 transition-all duration-300"
                         style={{ backgroundColor: 'rgba(11, 18, 32, 0.5)' }}
                       >
-                        <div className="flex flex-col gap-3">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                              <highlight.icon className="w-4 h-4 text-primary" />
-                            </div>
-                            <span className="text-xs font-bold text-primary">
-                              {highlight.title}
-                            </span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                            <highlight.icon className="w-4 h-4 text-primary" />
                           </div>
-                          <p className="text-sm leading-relaxed" style={{ color: '#B6C6D3' }}>
-                            {highlight.text}
-                          </p>
+                          <span className="text-xs font-bold text-primary">
+                            {highlight.title}
+                          </span>
                         </div>
                       </div>
                     ))}
