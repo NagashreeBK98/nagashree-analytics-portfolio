@@ -1,34 +1,42 @@
-import { Briefcase, TrendingUp, Zap, Cloud, BarChart3, Sparkles, Trophy } from 'lucide-react';
+import { Briefcase, Zap, BarChart3, Sparkles, Trophy, CheckCircle, GitBranch, Database, Workflow, Shield } from 'lucide-react';
 import { useState } from 'react';
 
 const experiences = [
   {
-    title: 'Analyst I',
+    title: 'Analyst I – Data Engineer',
     company: 'DXC Technology',
     location: 'Bangalore, India',
-    period: 'Nov 2022 – Jul 2025',
+    period: 'Nov 2022 – May 2025',
     duration: '2+ years',
-    signatureImpact: 'From raw ingestion to executive dashboards, owned and scaled cloud analytics pipelines across Azure and AWS.',
-    techStack: 'Python · SQL · Power BI · Azure Data Factory · Azure SQL · AWS (S3, Lambda) · Git',
-    recognition: {
-      title: 'FY24 Q3 Champs Award',
-      description: 'Awarded for high-impact analytics delivery, automation initiatives, and measurable business outcomes.',
-    },
+    signatureImpact: 'Production-grade ETL pipelines across Azure — Airflow, Databricks, PySpark, Data Lake',
+    subtitle: 'Millions of records daily · Multi-source ingestion · CI/CD automated deployment',
+    techStack: 'Python · SQL · Apache Airflow · Azure Databricks · PySpark · Azure Data Lake Gen2 · Azure Blob Storage · GitHub Actions',
+    recognition: null,
     highlights: [
       {
-        icon: BarChart3,
-        title: 'Power BI & SLA Impact – 15%',
-        text: 'Designed Power BI dashboards integrating ServiceNow and Azure SQL, improving SLA performance by 15% and enabling data-driven operational decisions.',
-      },
-      {
         icon: Zap,
-        title: 'ETL Automation – 50%',
-        text: 'Built and automated end-to-end ETL pipelines using Python, SQL, and Azure Data Factory, reducing manual reporting effort by 50%.',
+        title: 'ETL Automation · 50% Less Manual Effort',
+        text: 'Built automated ETL pipelines using Python and SQL to ingest multi-source operational data — eliminating manual reporting effort by 50%.',
       },
       {
-        icon: Cloud,
-        title: 'Multi-Cloud Analytics',
-        text: 'Implemented AWS–Azure data workflows (S3, Lambda, Data Lake) to enable cross-cloud analytics and scalable data ingestion.',
+        icon: Workflow,
+        title: 'Airflow Orchestration · 35% Better Availability',
+        text: 'Orchestrated batch and incremental workflows using Apache Airflow, handling millions of records daily into Azure Data Lake.',
+      },
+      {
+        icon: Shield,
+        title: 'Data Validation · 30% Better Detection',
+        text: 'Implemented pipeline validation — schema enforcement, null handling, anomaly detection — reducing data issues in production by 30%.',
+      },
+      {
+        icon: Database,
+        title: 'PySpark Optimization · 25% Faster',
+        text: 'Optimized large-scale transformations using Databricks PySpark — partition pruning, broadcast joins, caching — improving performance by 25%.',
+      },
+      {
+        icon: GitBranch,
+        title: 'CI/CD Deployment · Zero Manual Releases',
+        text: 'Integrated ETL pipelines with GitHub Actions CI/CD — automated testing and deployment, eliminating manual release errors.',
       },
     ],
     bgColor: '#0E2A3A',
@@ -37,10 +45,11 @@ const experiences = [
     title: 'Associate Professional Software Engineer',
     company: 'DXC Technology',
     location: 'Bangalore, India',
-    period: 'Mar 2020 – Oct 2022',
+    period: 'May 2020 – Oct 2022',
     duration: '2+ years',
-    signatureImpact: 'Strengthened system reliability and observability through automation, monitoring, and predictive analytics.',
-    techStack: 'Python · SQL · Excel · Power BI · Servers & Clusters · Azure Monitor · ServiceNow · AWS',
+    signatureImpact: 'Built foundational data engineering skills through automation, validation, and operational analytics.',
+    subtitle: 'ServiceNow data · SLA tracking · Power BI dashboards · Python automation',
+    techStack: 'Python · SQL · Power BI · ServiceNow · Excel',
     recognition: {
       title: 'FY24 H1 Collaborators Award',
       description: 'Recognized for cross-team collaboration, delivery excellence, and consistent performance.',
@@ -48,18 +57,18 @@ const experiences = [
     highlights: [
       {
         icon: Zap,
-        title: 'Automation & Monitoring – 70%',
-        text: 'Built infrastructure monitoring automation, reducing operational effort by 70% and improving incident response efficiency.',
+        title: 'Data Automation · 30% Better Readiness',
+        text: 'Automated data extraction and preprocessing using Python and SQL — improving data readiness for reporting by 30%.',
       },
       {
         icon: BarChart3,
-        title: 'Predictive Analytics & Dashboards',
-        text: 'Implemented predictive analytics on cloud logs and created Power BI and Excel dashboards for performance monitoring.',
+        title: 'Power BI Dashboards · 25% Faster Decisions',
+        text: 'Built operational Power BI dashboards tracking SLA compliance, ticket volume, and incident metrics for leadership visibility.',
       },
       {
-        icon: TrendingUp,
-        title: 'System Reliability – 99.9%',
-        text: 'Maintained 99.9% system availability through proactive monitoring, alerting, and incident management.',
+        icon: CheckCircle,
+        title: 'Data Validation · 20% Less Rework',
+        text: 'Performed exploratory validation on system and log datasets — reducing data inconsistencies and rework in reporting cycles by 20%.',
       },
     ],
     bgColor: '#0B1F2E',
@@ -144,7 +153,6 @@ const ExperienceSection = () => {
                       activeIndex === index ? 'text-background' : 'text-primary'
                     }`} />
                   </div>
-                  {/* Subtle active dot indicator */}
                   {activeIndex === index && (
                     <div 
                       className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
@@ -195,18 +203,23 @@ const ExperienceSection = () => {
                     </div>
                   </div>
 
-                  {/* Signature Impact */}
-                  <p className="text-base font-semibold mb-4 leading-relaxed" style={{ color: '#EAFBFF' }}>
+                  {/* Headline */}
+                  <p className="text-base font-semibold mb-1 leading-relaxed" style={{ color: '#EAFBFF' }}>
                     {exp.signatureImpact}
                   </p>
 
-                  {/* Tech Stack - Single muted line */}
+                  {/* Subtitle */}
+                  <p className="text-sm mb-4" style={{ color: '#9CA3AF' }}>
+                    {exp.subtitle}
+                  </p>
+
+                  {/* Tech Stack */}
                   <p className="text-sm mb-5" style={{ color: '#9CA3AF' }}>
                     <span className="font-medium">Tech Stack:</span> {exp.techStack}
                   </p>
 
-                  {/* Highlights Grid - 3 cards only */}
-                  <div className="grid sm:grid-cols-3 gap-3 mb-5">
+                  {/* Highlights Grid */}
+                  <div className={`grid gap-3 mb-5 ${exp.highlights.length > 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-3'}`}>
                     {exp.highlights.map((highlight, hIndex) => (
                       <div
                         key={hIndex}
@@ -230,22 +243,23 @@ const ExperienceSection = () => {
                     ))}
                   </div>
 
-
-                  {/* Recognition - Gold trophy styling */}
-                  <div 
-                    className="flex items-start gap-3 p-3 rounded-xl border mt-2"
-                    style={{ 
-                      backgroundColor: '#0F2430',
-                      borderColor: 'rgba(245, 194, 107, 0.2)',
-                      boxShadow: '0 0 10px rgba(245, 194, 107, 0.08)'
-                    }}
-                  >
-                    <Trophy className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#F5C26B' }} />
-                    <div>
-                      <p className="text-sm font-semibold" style={{ color: '#B6C6D3' }}>{exp.recognition.title}</p>
-                      <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{exp.recognition.description}</p>
+                  {/* Recognition */}
+                  {exp.recognition && (
+                    <div 
+                      className="flex items-start gap-3 p-3 rounded-xl border mt-2"
+                      style={{ 
+                        backgroundColor: '#0F2430',
+                        borderColor: 'rgba(245, 194, 107, 0.2)',
+                        boxShadow: '0 0 10px rgba(245, 194, 107, 0.08)'
+                      }}
+                    >
+                      <Trophy className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#F5C26B' }} />
+                      <div>
+                        <p className="text-sm font-semibold" style={{ color: '#B6C6D3' }}>{exp.recognition.title}</p>
+                        <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{exp.recognition.description}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
