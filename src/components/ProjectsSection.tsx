@@ -5,6 +5,7 @@ import projectCustomerSegmentation from '@/assets/project-customer-segmentation.
 import projectStockNetwork from '@/assets/project-stock-network.png';
 import projectEegClassification from '@/assets/project-eeg-classification.png';
 import projectCrimeAnalysis from '@/assets/project-crime-analysis.png';
+import projectCourseweaveAi from '@/assets/project-courseweave-ai.png';
 
 const projects = [
   {
@@ -18,10 +19,11 @@ const projects = [
   {
     title: 'CourseWeave AI',
     subtitle: 'AI-powered academic planning platform using RAG, Airflow, and vector search',
-    image: 'https://placehold.co/800x400/1a1a2e/22d3ee?text=CourseWeave+AI',
+    image: projectCourseweaveAi,
     description: 'Built an end-to-end academic planning platform for Northeastern University — an 8-task Airflow data pipeline for course catalog ingestion, semantic chunking with HuggingFace BGE embeddings stored in Pinecone, and a RAG-based chatbot that generates prerequisite-compliant course recommendations aligned with student career goals.',
     technologies: ['Apache Airflow', 'DVC', 'PostgreSQL', 'HuggingFace BGE', 'Pinecone', 'LangChain', 'GCP', 'Python'],
-    link: '#',
+    link: 'https://github.com/NagashreeBK98/courseweave-ai-chatbot/tree/main',
+    githubLink: 'https://github.com/NagashreeBK98/courseweave-ai-chatbot/tree/main',
   },
   {
     title: 'Customer Segmentation Using RFM Analysis',
@@ -151,26 +153,50 @@ const ProjectsSection = () => {
                     ))}
                   </div>
 
-                  {/* Action Button - Muted primary style */}
-                  <Button 
-                    size="sm" 
-                    asChild
-                    className="w-full group/btn text-primary-foreground border-0"
-                    style={{
-                      backgroundColor: 'rgba(31, 182, 201, 0.25)',
-                      color: '#B6C6D3'
-                    }}
-                  >
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                  {/* Action Buttons */}
+                  <div className="flex gap-2">
+                    <Button 
+                      size="sm" 
+                      asChild
+                      className={`group/btn text-primary-foreground border-0 ${(project as any).githubLink ? 'flex-1' : 'w-full'}`}
+                      style={{
+                        backgroundColor: 'rgba(31, 182, 201, 0.25)',
+                        color: '#B6C6D3'
+                      }}
                     >
-                      View Project Details
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                    </a>
-                  </Button>
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                      >
+                        View Project Details
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </a>
+                    </Button>
+                    {(project as any).githubLink && (
+                      <Button 
+                        size="sm" 
+                        asChild
+                        className="group/gh border-0"
+                        style={{
+                          backgroundColor: 'rgba(31, 182, 201, 0.25)',
+                          color: '#B6C6D3'
+                        }}
+                      >
+                        <a 
+                          href={(project as any).githubLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                        >
+                          <Github className="w-4 h-4" />
+                          GitHub
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover/gh:translate-x-1" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
