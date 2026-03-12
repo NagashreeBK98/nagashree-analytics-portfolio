@@ -19,10 +19,11 @@ const projects = [
   {
     title: 'CourseWeave AI',
     subtitle: 'AI-powered academic planning platform using RAG, Airflow, and vector search',
-    image: 'https://placehold.co/800x400/1a1a2e/22d3ee?text=CourseWeave+AI',
+    image: projectCourseweaveAi,
     description: 'Built an end-to-end academic planning platform for Northeastern University — an 8-task Airflow data pipeline for course catalog ingestion, semantic chunking with HuggingFace BGE embeddings stored in Pinecone, and a RAG-based chatbot that generates prerequisite-compliant course recommendations aligned with student career goals.',
     technologies: ['Apache Airflow', 'DVC', 'PostgreSQL', 'HuggingFace BGE', 'Pinecone', 'LangChain', 'GCP', 'Python'],
-    link: '#',
+    link: 'https://github.com/NagashreeBK98/courseweave-ai-chatbot/tree/main',
+    githubLink: 'https://github.com/NagashreeBK98/courseweave-ai-chatbot/tree/main',
   },
   {
     title: 'Customer Segmentation Using RFM Analysis',
