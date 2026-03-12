@@ -11,7 +11,10 @@ const experiences = [
     signatureImpact: 'Production-grade ETL pipelines across Azure — Airflow, Databricks, PySpark, Data Lake',
     subtitle: 'Millions of records daily · Multi-source ingestion · CI/CD automated deployment',
     techStack: 'Python · SQL · Apache Airflow · Azure Databricks · PySpark · Azure Data Lake Gen2 · Azure Blob Storage · GitHub Actions',
-    recognition: null,
+    recognition: {
+      title: 'FY24 Q3 Champs Award',
+      description: 'Awarded for high-impact analytics delivery, automation initiatives, and measurable business outcomes.',
+    },
     highlights: [
       {
         icon: Zap,
