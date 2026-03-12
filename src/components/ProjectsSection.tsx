@@ -153,26 +153,50 @@ const ProjectsSection = () => {
                     ))}
                   </div>
 
-                  {/* Action Button - Muted primary style */}
-                  <Button 
-                    size="sm" 
-                    asChild
-                    className="w-full group/btn text-primary-foreground border-0"
-                    style={{
-                      backgroundColor: 'rgba(31, 182, 201, 0.25)',
-                      color: '#B6C6D3'
-                    }}
-                  >
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                  {/* Action Buttons */}
+                  <div className="flex gap-2">
+                    <Button 
+                      size="sm" 
+                      asChild
+                      className={`group/btn text-primary-foreground border-0 ${(project as any).githubLink ? 'flex-1' : 'w-full'}`}
+                      style={{
+                        backgroundColor: 'rgba(31, 182, 201, 0.25)',
+                        color: '#B6C6D3'
+                      }}
                     >
-                      View Project Details
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                    </a>
-                  </Button>
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                      >
+                        View Project Details
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </a>
+                    </Button>
+                    {(project as any).githubLink && (
+                      <Button 
+                        size="sm" 
+                        asChild
+                        className="group/gh border-0"
+                        style={{
+                          backgroundColor: 'rgba(31, 182, 201, 0.25)',
+                          color: '#B6C6D3'
+                        }}
+                      >
+                        <a 
+                          href={(project as any).githubLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex items-center justify-center gap-2 hover:bg-primary/35 transition-colors"
+                        >
+                          <Github className="w-4 h-4" />
+                          GitHub
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover/gh:translate-x-1" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
