@@ -5,6 +5,7 @@ import projectCustomerSegmentation from '@/assets/project-customer-segmentation.
 import projectStockNetwork from '@/assets/project-stock-network.png';
 import projectEegClassification from '@/assets/project-eeg-classification.png';
 import projectCrimeAnalysis from '@/assets/project-crime-analysis.png';
+import projectCourseweaveAi from '@/assets/project-courseweave-ai.png';
 
 const projects = [
   {
